@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Car Rental Website</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header {
+            background-color: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #555;
+            padding: 5px 10px;
+        }
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .hero {
+            background-image: url('./images/download\ \(3\).jfif'); 
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.4);
+            z-index: 1;
+        }
+
+        .hero-content-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .search-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .form-group {
+            flex-grow: 1;
+            min-width: 150px;
+        }
+        
+        .form-group select, .form-group input, .form-group button {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .search-button {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: none !important;
+        }
+        
+        .section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        
+        .section-subtitle {
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        .grid-3-col {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            flex: 1 1 300px;
+            min-width: 280px;
+            text-align: left;
+        }
+        
+        .card-title {
+            color: #007bff;
+            font-size: 1.4rem;
+            margin-top: 0;
+        }
+        .features {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .features p.subtext {
+      color: #7f8c8d;
+      margin-bottom: 60px;
+      font-size: 1rem;
+    }
+
+    .feature-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .feature-box {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      transition: all 0.3s ease;
+      width: 300px;
+      padding: 40px 25px;
+      text-align: center;
+    }
+
+    .feature-box:hover {
+      box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.08);
+      transform: translateY(-5px);
+    }
+
+    .icon-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px auto;
+    }
+
+    .icon-circle i {
+      font-size: 28px;
+      color: #34495e;
+    }
+
+    .feature-box h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .feature-box p {
+      font-size: 0.95rem;
+      color: #7f8c8d;
+      margin-bottom: 20px;
+    }
+
+    .feature-box a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .feature-box a:hover {
+      text-decoration: underline;
+    }
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1 1 200px;
+        }
+
+        .footer-col h5 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #555;
+            padding-bottom: 5px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 5px;
+        }
+        .footer-col a:hover {
+            color: #007bff;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #555;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-content {
+                justify-content: center;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .footer-col {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">CarRental</a>
+                <div class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#">Cars</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content-wrapper">
+            <h1 class="hero-title">
+                Your Destination, Our Ride. <br>
+                <span style="font-weight: normal;">Rent a Car Easily.</span>
+            </h1>
+            
+            <div class="search-form">
+                <div class="form-group">
+                    <select>
+                        <option>Select Car Type</option>
+                        <option>Sedan</option>
+                        <option>SUV</option>
+                        <option>Luxury</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Pick up Date (MM/DD/YY)">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Drop off Date (MM/DD/YY)">
+                </div>
+                <div class="form-group">
+                    <button class="search-button">Search Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="section how-it-works">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Three Simple Steps</p>
+                
+                <div class="grid-3-col">
+                    <div class="card">
+                        <span style="font-size: 2rem; display: block; margin-bottom: 10px; color: #007bff;">1</span>
+                        <h3 class="card-title">Choose Your Car</h3>
+                        <p>Browse our extensive collection of vehicles. All cars are clean and well-maintained.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <span style="font-size: 2rem; display: block; margin-bottom: 10px; color: #007bff;">2</span>
+                        <h3 class="card-title">Fill Details</h3>
+                        <p>Provide the necessary details like dates and location. This takes very little time.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <span style="font-size: 2rem; display: block; margin-bottom: 10px; color: #007bff;">3</span>
+                        <h3 class="card-title">Get Keys</h3>
+                        <p>Complete the online payment and get ready to pick up your car keys!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section testimonials" style="background-color: #f9f9f9;">
+            <div class="container">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Trusted by thousands of happy customers.</p>
+                
+                <div class="grid-3-col">
+                    <div class="card" style="text-align: center;">
+                        <p>"The process was incredibly fast and easy. I got a great car at a competitive price. Highly recommend!"</p>
+                        <strong style="display: block; margin-top: 15px;">— John D.</strong>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <p>"Excellent customer service! They were very flexible with the pickup and drop-off times. Will use again."</p>
+                        <strong style="display: block; margin-top: 15px;">— Sarah K.</strong>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <p>"Clean cars and transparent pricing. No hidden fees, which I really appreciated. Five stars!"</p>
+                        <strong style="display: block; margin-top: 15px;">— Amit R.</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section car-listings" style="background-color: white;">
+            <div class="container">
+                <h2 class="section-title">Our Car Listings</h2>
+                <p class="section-subtitle">Choose according to your convenience</p>
+                
+                <div class="grid-3-col">
+                    <div class="card">
+                        <img src="./images/download (2).jfif" alt="Sedan Car" style="width: 100%; border-radius: 5px; margin-bottom: 15px;">
+                        <h3 class="card-title">Hyundai Verna</h3>
+                        <p>Rent: <strong style="color: #007bff;">$50 / day</strong></p>
+                        <p style="font-size: 0.9rem; color: #777;">Automatic, AC, 5 seats.</p>
+                        <button class="search-button" style="padding: 10px; font-size: 1rem;">Rent Now</button>
+                    </div>
+
+                    <div class="card">
+                        <img src="./images/image 1.jfif" alt="SUV Car" style="width: 100%; border-radius: 5px; margin-bottom: 15px;">
+                        <h3 class="card-title">Toyota Fortuner</h3>
+                        <p>Rent: <strong style="color: #007bff;">$80 / day</strong></p>
+                        <p style="font-size: 0.9rem; color: #777;">Manual, 4x4, 7 seats.</p>
+                        <button class="search-button" style="padding: 10px; font-size: 1rem;">Rent Now</button>
+                    </div>
+                     <div class="card">
+                        <img src="./images/download (1).jfif" alt="Luxury Car" style="width: 100%; border-radius: 5px; margin-bottom: 15px;">
+                        <h3 class="card-title">Mercedes C-Class</h3>
+                        <p>Rent: <strong style="color: #007bff;">$150 / day</strong></p>
+                        <p style="font-size: 0.9rem; color: #777;">Automatic, Leather, Sunroof.</p>
+                        <button class="search-button" style="padding: 10px; font-size: 1rem;">Rent Now</button>
+                    </div>
+                </div>
+            </div>
+             </section>
+             
+  <section class="features">
+    <h2>Features</h2>
+    <p class="subtext">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+    <div class="feature-boxes">
+
+      <div class="feature-box">
+        <div class="icon-circle">
+          <i class="fa-solid fa-house"></i>
+        </div>
+        <h3>Lorem ipsum dolor</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+        <a href="#">Learn more</a>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon-circle">
+          <i class="fas fa-cog"></i>
+        </div>
+        <h3>Lorem ipsum dolor</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+        <a href="#">Learn more</a>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon-circle">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h3>Lorem ipsum dolor</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+        <a href="#">Learn more</a>
+      </div>
+
+    </div>
+  </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    
+                    <div class="footer-col">
+                        <a href="#" class="logo" style="color: white; font-size: 1.5rem;">CarRental</a>
+                        <p style="font-size: 0.9rem; margin-top: 10px; color: #ccc;">
+                            The best and most reliable car rental service for all your journeys.
+                        </p>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Quick Links</h5>
+                        <a href="#">About Us</a>
+                        <a href="#">Testimonials</a>
+                        <a href="#">Terms & Conditions</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Support</h5>
+                        <a href="#">FAQ</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h5>Contact Info</h5>
+                        <p style="color: #ccc;">Phone: +1 234 567 890</p>
+                        <p style="color: #ccc;">Email: info@carrental.com</p>
+                    </div>
+                    
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2024 CarRental. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
